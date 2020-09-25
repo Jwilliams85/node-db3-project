@@ -6,7 +6,7 @@ select ProductName, CategoryID
 from product
 
 -- Display the order Id and shipper CompanyName for all orders placed before August 9 2012. Shows 429 records.
-
+-- //join is a default of INNER JOIN. There is also LEFT AND RIGHT JOIN
 select shipper.CompanyName, od.OrderId, [order].OrderDate
 from shipper
 join OrderDetail as od
@@ -26,3 +26,10 @@ select c.CompanyName, e.LastName, o.id
 from [order] as o 
 join [customer] as c ON o.CustomerId = c.Id
 join [employee]as e  ON o.EmployeeId = e.Id
+
+
+-- STRETCH:
+--  -   Displays CategoryName and a new column called Count that shows how many products are in each category. Shows 8 records.
+SELECT CategoryName, Count(*) as Count FROM [Category]
+JOIN Product ON Product.CategoryID = Category.ID
+GROUP BY CategoryName;
